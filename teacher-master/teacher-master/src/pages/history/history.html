@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>考勤历史</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <ion-item>
+      <ion-label stacked>选择课程</ion-label>
+      <ion-select [(ngModel)]="courseId" (ngModelChange)="switchType()"  interface="popover" style="height:45px;" placeholder="选择课程">
+        <ion-option value="">请选择课程</ion-option>
+        <div *ngFor="let course of courseList">
+          <ion-option value="{{course?.courseId}}">{{course?.courseName}}</ion-option>
+        </div>
+      </ion-select>
+    </ion-item>
+
+    <ion-item >
+      <ion-label stacked>选择课程时间</ion-label>
+      <ion-select [(ngModel)]="courseTimeId" (ngModelChange)="switchType2()"  interface="popover" style="height:45px;" placeholder="选择课程时间">
+        <ion-option value="">请选择课程时间</ion-option>
+        <div *ngFor="let courseTime of courseTimeList">
+          <ion-option value="{{courseTime?.courseTimeId}}">{{courseTime?.timeInfo}}</ion-option>
+        </div>
+      </ion-select>
+    </ion-item>
+    <ion-item >
+      <ion-label stacked>选择第几周</ion-label>
+      <ion-select [(ngModel)]="callOrder" (ngModelChange)="switchType3()" interface="popover" style="height:45px;" placeholder="选择第几周">
+        <ion-option value="">请选择第几周</ion-option>
+        <div *ngFor="let callOrder of callOderList">
+          <ion-option value="{{callOrder?.value}}">{{callOrder?.key}}</ion-option>
+        </div>
+      </ion-select>
+    </ion-item>
+  </div>
+  <button ion-button (click)="getCallThreollList()"  full>刷新</button>
+
+  <ion-grid>
+    <ion-row class="row1">
+      <ion-col class="col" >姓名</ion-col>
+      <ion-col class="col" >学号</ion-col>
+      <ion-col class="col" >时间</ion-col>
+      <ion-col class="col"  >位置</ion-col>
+      <ion-col class="col" >状态</ion-col>
+    </ion-row>
+
+    <ion-row *ngFor="let callTheroll of callTherollList">
+      <ion-col >{{callTheroll.name}}</ion-col>
+      <ion-col >{{callTheroll.no}}</ion-col>
+      <ion-col>{{callTheroll.callDate}}</ion-col>
+      <ion-col>{{callTheroll.callPosition}}</ion-col>
+      <ion-col>{{callTheroll.callStateStr}}</ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+
+  <!--</ion-grid>-->
+  <ion-content>
+
+  </ion-content>
+</ion-content>

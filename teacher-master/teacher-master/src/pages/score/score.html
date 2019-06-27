@@ -1,0 +1,93 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>设置成绩</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <!--<ion-grid no-lines="">-->
+  <div *ngIf="due"  class="show2">
+    <ion-item>
+      <ion-label stacked>选择课程</ion-label>
+      <ion-select [(ngModel)]="courseId" (ngModelChange)="switchType()"  interface="popover" style="height:45px;" placeholder="选择课程">
+        <ion-option value="">请选择课程</ion-option>
+        <div *ngFor="let course of courseList">
+          <ion-option value="{{course?.courseId}}">{{course?.courseName}}</ion-option>
+        </div>
+      </ion-select>
+    </ion-item>
+
+
+    <ion-grid>
+      <ion-row class="row1">
+        <ion-col >学号</ion-col>
+        <ion-col >姓名</ion-col>
+        <ion-col>平时成绩</ion-col>
+        <ion-col>考试成绩</ion-col>
+      </ion-row>
+
+
+      <ion-row *ngFor="let mark of markList" (click)="edit(mark.markId)">
+        <ion-col>{{mark?.no}}</ion-col>
+        <ion-col>{{mark?.name}}</ion-col>
+        <ion-col>{{mark?.dailyScore}}</ion-col>
+        <ion-col>{{mark?.finalScore}}</ion-col>
+      </ion-row>
+
+    </ion-grid>
+  </div>
+
+  <!--选项二-->
+  <div *ngIf="!due" class="show2">
+    <ion-grid>
+      <ion-list>
+        <ion-item>
+          <ion-label fixed>科目</ion-label>
+          <ion-input [(ngModel)]="courseName" disabled=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>学号</ion-label>
+          <ion-input [(ngModel)]="no" disabled=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>姓名</ion-label>
+          <ion-input [(ngModel)]="name" disabled=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>日常分</ion-label>
+          <ion-input [(ngModel)]="dailyScore"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>期末分</ion-label>
+          <ion-input [(ngModel)]="finalScore"></ion-input>
+        </ion-item>
+      </ion-list>
+      <ion-row>
+        <ion-col><button ion-button (click)="post()" style="width: 100%">提交</button></ion-col>
+        <ion-col><button ion-button (click)="back()" style="width: 100%">返回</button></ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <!--选项二-->
+
+  <!--</ion-grid>-->
+
+</ion-content>
+
+
+<ion-footer align-title="center" class="bar-assertive" style="height: 10%">
+  <div class="row">
+    <div class="col">
+      <div class="col-demo" ><button ion-item (click)="fresh()">
+        <div style="text-align:center">刷新</div></button></div>
+    </div>
+  </div>
+
+
+
+</ion-footer>

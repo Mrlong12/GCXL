@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>学生信息</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+  <div>
+    <ion-item>
+      <ion-label stacked>选择课程</ion-label>
+      <ion-select [(ngModel)]="courseId" (ngModelChange)="switchType()"  interface="popover" style="height:45px;" placeholder="选择课程">
+        <ion-option value="">请选择课程</ion-option>
+        <div *ngFor="let course of courseList">
+          <ion-option value="{{course?.courseId}}">{{course?.courseName}}</ion-option>
+        </div>
+      </ion-select>
+    </ion-item>
+
+    <ion-item >
+      <ion-label stacked>课程班级</ion-label>
+      <ion-select [(ngModel)]="courseClassNo" (ngModelChange)="switchType2()"  interface="popover" style="height:45px;" placeholder="选择课程班级">
+        <ion-option value="">请选择课程班级</ion-option>
+        <div *ngFor="let classNo of courseClassNoList">
+          <ion-option value="{{classNo?.value}}">{{classNo?.key}}</ion-option>
+        </div>
+      </ion-select>
+    </ion-item>
+
+  </div>
+  <ion-grid>
+    <ion-row class="row1">
+      <ion-col>学号</ion-col>
+      <ion-col>姓名</ion-col>
+      <ion-col>性别</ion-col>
+      <ion-col>专业</ion-col>
+      <ion-col>班级</ion-col>
+      <ion-col>缺勤</ion-col>
+      <ion-col>请假</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let student of studentList" (click)="look(student.stu_id)">
+      <ion-col>{{student?.no}}</ion-col>
+      <ion-col>{{student?.name}} {{count?.period}}</ion-col>
+      <ion-col>{{student?.gender_str}}</ion-col>
+      <ion-col>{{student?.major}}</ion-col>
+      <ion-col>{{student?.class_no_str}}</ion-col>
+      <ion-col>{{student?.que_qin}}</ion-col>
+      <ion-col>{{student?.qing_jia}}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

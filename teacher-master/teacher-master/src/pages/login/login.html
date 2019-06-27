@@ -1,0 +1,40 @@
+<ion-content padding class="transparent-header" >
+  <!--<ion-header>-->
+  <!--<ion-navbar>-->
+  <!--</ion-navbar>-->
+  <!--</ion-header>-->
+  <img src="assets/img/background/logoin_title.jpg" alt="">
+  <div padding>
+
+    <form (ngSubmit)="login()">
+
+      <ion-row>
+        <ion-col>
+          <ion-list inset class="no-border">
+            <ion-item>
+              <ion-label>账名：</ion-label>
+              <ion-input type="text"  [(ngModel)]="user.name" name="name" placeholder="用户名或手机号码"></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-label>密码：</ion-label>
+              <ion-input type="password"  [(ngModel)]="user.pwd" name="pwd" placeholder="用户密码"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+
+      <ion-row  style="text-align:center">
+        <ion-col>
+          <button ion-button color="primary" type="submit" class="login-button">登录</button>
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-row>
+      <ion-col>
+        <div (click)="goToSignup()">
+
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

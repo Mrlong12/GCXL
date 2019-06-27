@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>首页</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content no-padding>
+  <img src="assets/img/background/1.jpg" alt="">
+<ion-item>{{name}}，您好！</ion-item>
+
+  <ion-grid>
+    <ion-row  *ngFor="let course of courseList">
+      <ion-col>
+        {{course.courseName}}
+      </ion-col>
+      <ion-item *ngFor="let classInfo of course.classInfoMapList">
+            {{classInfo.week}} {{classInfo.classLocation}}  {{classInfo.period}}
+      </ion-item>
+    </ion-row>
+
+  </ion-grid>
+
+
+</ion-content>

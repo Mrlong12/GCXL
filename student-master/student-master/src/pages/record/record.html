@@ -1,0 +1,21 @@
+<ion-header >
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle >
+      <ion-icon name="menu" ></ion-icon>
+    </button>
+    <ion-title >考勤记录</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+  <button ion-button="" outline block color="primary" (click)="gotoInfo()">查询考勤信息</button>
+  <ion-card *ngFor="let item of calltherolls">
+    <img src="assets/img/pure.jpg">
+
+    <div class="card-title">课程：{{item.courseName}}</div>
+    <div class="card-subtitle">记录类型:{{item.callstate}}</div>
+    <div class="card-subtitle-1">日期：{{item.calldate}}</div>
+
+  </ion-card>
+</ion-content>

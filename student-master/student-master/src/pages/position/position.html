@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="arrow-back"></ion-icon>
+    </button>
+    <ion-title>签到或请假</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="position-page">
+
+  <!--<ion-item no-lines="">所选课程：{{homeItem.course_name}}</ion-item>-->
+
+  <ion-item no-lines=""></ion-item>
+  <button ion-button block outline color="primary"  (click)="gotoSign()">选择位置签到</button>
+  <br/>
+  <button ion-button block outline color="primary"  (click)="askForLeave()">请假申请</button>
+
+
+</ion-content>

@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>设置课程</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <div *ngIf="due">
+    <ion-grid >
+
+    <ion-row class="row1">
+      <ion-col>课程编号</ion-col>
+      <ion-col>课程名</ion-col>
+      <ion-col >日常比重</ion-col>
+      <ion-col >期末比重</ion-col>
+      <ion-col >周序</ion-col>
+      <ion-col >学时</ion-col>
+      <ion-col >旷课警戒线</ion-col>
+    </ion-row>
+
+      <ion-row  *ngFor="let course of courseList" (click)="edit(course.courseId)">
+        <ion-col >{{course?.courseNo}}</ion-col>
+        <ion-col >{{course?.courseName}}</ion-col>
+        <ion-col>{{course?.dailyWeight}}</ion-col>
+        <ion-col>{{course?.finalWeight}}</ion-col>
+        <ion-col>{{course?.classDate}}周</ion-col>
+        <ion-col>{{course?.classOrder}}</ion-col>
+        <ion-col>{{course?.picketLine}}</ion-col>
+      </ion-row>
+
+  </ion-grid>
+
+    </div>
+
+  <!--选项二-->
+    <div *ngIf="!due" class="show2">
+      <ion-grid>
+      <ion-list>
+        <ion-item>
+          <ion-label fixed>课程编号</ion-label>
+          <ion-input [(ngModel)]="courseNo" disabled=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>课程名</ion-label>
+          <ion-input [(ngModel)]="courseName" disabled=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>日常比重</ion-label>
+          <ion-input [(ngModel)]="dailyWeight"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>周序</ion-label>
+          <ion-input  [(ngModel)]="classDate" disabled=""></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>学时</ion-label>
+          <ion-input [(ngModel)]="classOrder"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label fixed>旷课警戒线</ion-label>
+          <ion-input [(ngModel)]="picketLine"></ion-input>
+        </ion-item>
+
+      </ion-list>
+
+      </ion-grid>
+      <div>
+        <div><button ion-button (click)="post()" style="width: 100%">提交</button></div>
+        <div><button ion-button (click)="back()" style="width: 100%">返回</button></div>
+      </div>
+    </div>
+<!--选项二-->
+
+  <!--</ion-grid>-->
+
+</ion-content>

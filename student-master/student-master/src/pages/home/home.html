@@ -1,0 +1,32 @@
+
+<ion-header>
+  <ion-navbar color="secondary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>首页</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content no-padding>
+  <img src="assets/img/label.jpg" alt="">
+
+
+  <ion-list no-lines="" class="courses">
+    <ion-list-header text-center="" style="font-size: 1.5em;">今日待签到课程<br>点击进行签到或请假</ion-list-header>
+  <div *ngFor="let course of courses">
+      <button ion-button text-center outline block color="primary"
+              (click)="courseSelected($event, course)">
+          {{ course.course_name}}<br>
+          第{{course.start_period}}-{{course.end_period}}节  {{ course.class_location }}
+
+    </button>
+  </div>
+  </ion-list>
+  <!--<ion-list-header text-center="" style="font-size: 1.5em;">当前无未签到课程，请刷新重试！</ion-list-header>-->
+  <div text-center="" [hidden]="courses != 0" class="card-subtitle-1">当前无未签到课程，请刷新重试！</div>
+  <button ion-button (click)="refresh()" block="true" class="login-button" color="#ffffff">刷新</button>
+
+</ion-content>

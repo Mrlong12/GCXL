@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>考勤统计</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <!--<ion-grid no-lines="">-->
+    <ion-grid>
+      <ion-row class="row1">
+        <ion-col>课程</ion-col>
+        <ion-col>课程时间</ion-col>
+		<ion-col>第几周</ion-col>
+        <ion-col>考勤数</ion-col>
+        <ion-col>缺勤数</ion-col>
+        <ion-col>请假数</ion-col>
+        <ion-col>出勤数</ion-col>
+      </ion-row>
+
+<div class="show3">
+  <ion-row *ngFor="let count of countList" (click)="search(count.course_id, count.course_time_id)">
+    <ion-col>{{count?.course_name}}</ion-col>
+    <ion-col>{{count?.week_str}} {{count?.period}}</ion-col>
+    <ion-col>{{count?.call_order}}</ion-col>
+	
+    <ion-col>{{count?.kao_qin}}</ion-col>
+    <ion-col>{{count?.que_qin}}</ion-col>
+    <ion-col>{{count?.qing_jia}}</ion-col>
+    <ion-col>{{count?.chu_qin}}</ion-col>
+  </ion-row>
+</div>
+    </ion-grid>
+
+
+
+  <!--</ion-grid>-->
+
+
+</ion-content>
+

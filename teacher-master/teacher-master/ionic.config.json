@@ -1,0 +1,7 @@
+{
+  "name": "StudentSignIn",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
